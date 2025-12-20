@@ -6,5 +6,5 @@ spec:
   selector:
     app: {{ .Release.Name }}-app
   ports:
-  - port: {{ .Values.delete-task.servicePort }}
-    targetPort: {{ .Values.delete-task.Port }}
+  - port: {{ .Values.deletetask.servicePort }}
+    targetPort: {{ .Values.deletetask.Port }}

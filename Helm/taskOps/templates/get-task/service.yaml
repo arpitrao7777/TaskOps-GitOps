@@ -6,5 +6,5 @@ spec:
   selector:
     app: {{ .Release.Name }}-app
   ports:
-  - port: {{ .Values.get-task.servicePort }}
-    targetPort: {{ .Values.get-task.Port }}
+  - port: {{ .Values.gettask.servicePort }}
+    targetPort: {{ .Values.gettask.Port }}

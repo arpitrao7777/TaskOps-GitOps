@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-deployment
 spec:
-  replicas: {{ .Values.add-task.replicas }}
+  replicas: {{ .Values.addtask.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-app
@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-container
-        image: {{ .Values.common.ContainerRegistryUrl }}/{{ .Values.add-task.image.name }}:{{ .Values.add-task.image.tag }}
+        image: {{ .Values.common.ContainerRegistryUrl }}/{{ .Values.addtask.image.name }}:{{ .Values.addtask.image.tag }}
         ports:
-        - containerPort: {{ .Values.add-task.Port }}
+        - containerPort: {{ .Values.addtask.Port }}
         env:
         - name: CONNECTION_STRING
           value: {{ .Values.common.ConnectionString }}

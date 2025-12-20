@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-deployment
 spec:
-  replicas: {{ .Values.delete-taskreplicas }}
+  replicas: {{ .Values.deletetaskreplicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-app
@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-container
-        image: {{ .Values.common.ContainerRegistryUrl }}/{{ .Values.delete-task.image.name }}:{{ .Values.delete-task.image.tag }}
+        image: {{ .Values.common.ContainerRegistryUrl }}/{{ .Values.deletetask.image.name }}:{{ .Values.deletetask.image.tag }}
         ports:
-        - containerPort: {{ .Values.delete-task.Port }}
+        - containerPort: {{ .Values.deletetask.Port }}
         env:
         - name: CONNECTION_STRING
           value: {{ .Values.common.ConnectionString }}

@@ -3,9 +3,9 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-get-task-ingress
 spec:
-  ingressClassName: {{ .Values.get-task.ingress.ingressClass }}
+  ingressClassName: {{ .Values.gettask.ingress.ingressClass }}
   rules:
-  - host: {{ .Values.get-task.ingress.host }}
+  - host: {{ .Values.gettask.ingress.host }}
     http:
       paths:
       - pathType: Prefix
@@ -14,4 +14,4 @@ spec:
           service:
             name: {{ .Release.Name }}-get-task-api
             port: 
-              number: {{ .Values.get-task.servicePort }}
+              number: {{ .Values.gettask.servicePort }}

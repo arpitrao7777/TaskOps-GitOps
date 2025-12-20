@@ -13,7 +13,7 @@ ui:
   ingress: 
     host: ui.collegesmate.shop
 
-add-task:
+addtask:
   replicas: 2
   image:
     name: add-task-image
@@ -23,7 +23,7 @@ add-task:
   ingress:
     host: add-task.collegesmate.shop
 
-get-task:
+gettask:
   replicas: 2
   image:
     name: get-task-image
@@ -33,7 +33,7 @@ get-task:
   ingress:
     host: get-task.collegesmate.shop
 
-delete-task:
+deletetask:
   replicas: 2
   image:
     name: delete-task-image
