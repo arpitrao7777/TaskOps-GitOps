@@ -9,7 +9,7 @@ ui:
     name: todo-ui-image
     tag: v1
   servicePort: 80
-  Port: 80
+  targetPort: 80
   ingress: 
     host: ui.collegesmate.shop
 
@@ -19,7 +19,7 @@ addtask:
     name: add-task-image
     tag: v1
   servicePort: 8080
-  Port: 80
+  targetPort: 80
   ingress:
     host: add-task.collegesmate.shop
 
@@ -29,7 +29,7 @@ gettask:
     name: get-task-image
     tag: v1
   servicePort: 8080
-  Port: 80
+  targetPort: 80
   ingress:
     host: get-task.collegesmate.shop
 
@@ -39,6 +39,6 @@ deletetask:
     name: delete-task-image
     tag: v1
   servicePort: 8080
-  Port: 80
+  targetPort: 80
   ingress:
     host: delete-task.collegesmate.shop

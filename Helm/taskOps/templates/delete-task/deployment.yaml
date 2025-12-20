@@ -17,7 +17,7 @@ spec:
       - name: {{ .Release.Name }}-container
         image: {{ .Values.common.ContainerRegistryUrl }}/{{ .Values.deletetask.image.name }}:{{ .Values.deletetask.image.tag }}
         ports:
-        - containerPort: {{ .Values.deletetask.Port }}
+        - containerPort: {{ .Values.deletetask.targetPort }}
         env:
         - name: CONNECTION_STRING
           value: {{ .Values.common.ConnectionString }}

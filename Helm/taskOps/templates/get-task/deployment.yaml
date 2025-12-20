@@ -17,7 +17,7 @@ spec:
       - name: {{ .Release.Name }}-container
         image: {{ .Values.common.ContainerRegistryUrl }}/{{ .Values.gettask.image.name }}:{{ .Values.gettask.image.tag }}
         ports:
-        - containerPort: {{ .Values.gettask.Port }}
+        - containerPort: {{ .Values.gettask.targetPort }}
         env:
         - name: CONNECTION_STRING
           value: {{ .Values.common.ConnectionString }}

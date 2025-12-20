@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Release.Name }}-todo-ui-svc
@@ -7,4 +7,4 @@ spec:
     app: {{ .Release.Name }}-app
   ports:
   - port: {{ .Values.ui.servicePort }}
-    targetPort: {{ .Values.ui.Port }}
+    targetPort: {{ .Values.ui.targetPort }}

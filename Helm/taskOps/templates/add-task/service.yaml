@@ -7,4 +7,4 @@ spec:
     app: {{ .Release.Name }}-app
   ports:
   - port: {{ .Values.addtask.servicePort }}
-    targetPort: {{ .Values.addtask.Port }}
+    targetPort: {{ .Values.addtask.targetPort }}
