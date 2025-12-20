@@ -1,49 +1,44 @@
 common:
-  containerRegistryURL: devopsinsidersacr235.azurecr.io
+  ContainerRegistryUrl: test32971.azurecr.io
+  ConnectionString: Driver={ODBC Driver 18 for SQL Server};Server=tcp:test32971.database.windows.net,1433;Database=testerdb1;Uid=mysqladmin;Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
   ingressClass: azure-application-gateway
-  
+
 ui:
   replicas: 2
   image:
-    name: todo-ui
-    tag: v4
-  port: 80
-  ServicePort: 80
-  ingress:
-    host: ui.jhandu.shop
+    name: todo-ui-image
+    tag: v1
+  servicePort: 80
+  Port: 80
+  ingress: 
+    host: ui.collegesmate.shop
 
-getTask:
+add-task:
   replicas: 2
   image:
-    name: todo-get-tasks-api
+    name: add-task-image
     tag: v1
-  port: 8000
-  ServicePort: 80
-  connectionString: "Driver={ODBC Driver 18 for SQL Server};Server=tcp:sql-dev-todoapp-786.database.windows.net,1433;Database=sqldb-dev-todoapp;Uid=devopsadmin;Pwd=P@ssw01rd@123;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+  servicePort: 8080
+  Port: 80
   ingress:
-    host: get-tasks-api.jhandu.shop
-    ingressClass: azure-application-gateway
+    host: add-task.collegesmate.shop
 
-deleteTask:
+get-task:
   replicas: 2
   image:
-    name: todo-delete-tasks-api
+    name: get-task-image
     tag: v1
-  port: 8000
-  ServicePort: 80
-  connectionString: "Driver={ODBC Driver 18 for SQL Server};Server=tcp:sql-dev-todoapp-786.database.windows.net,1433;Database=sqldb-dev-todoapp;Uid=devopsadmin;Pwd=P@ssw01rd@123;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+  servicePort: 8080
+  Port: 80
   ingress:
-    host: delete-task-api.jhandu.shop
-    ingressClass: azure-application-gateway
+    host: get-task.collegesmate.shop
 
-addTask:
+delete-task:
   replicas: 2
   image:
-    name: todo-add-tasks-api
+    name: delete-task-image
     tag: v1
-  port: 8000
-  ServicePort: 80
-  connectionString: "Driver={ODBC Driver 18 for SQL Server};Server=tcp:sql-dev-todoapp-786.database.windows.net,1433;Database=sqldb-dev-todoapp;Uid=devopsadmin;Pwd=P@ssw01rd@123;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+  servicePort: 8080
+  Port: 80
   ingress:
-    host: add-task-api.jhandu.shop
-    ingressClass: nginx
+    host: delete-task.collegesmate.shop

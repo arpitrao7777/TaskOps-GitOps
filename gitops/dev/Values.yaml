@@ -1,0 +1,44 @@
+common:
+  ContainerRegistryUrl: test32971.azurecr.io
+  ConnectionString: Driver={ODBC Driver 18 for SQL Server};Server=tcp:test32971.database.windows.net,1433;Database=testerdb1;Uid=mysqladmin;Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
+  ingressClass: azure-application-gateway
+
+ui:
+  replicas: 2
+  image:
+    name: todo-ui-image
+    tag: v1
+  servicePort: 80
+  Port: 80
+  ingress: 
+    host: ui.collegesmate.shop
+
+add-task:
+  replicas: 2
+  image:
+    name: add-task-image
+    tag: v1
+  servicePort: 8080
+  Port: 80
+  ingress:
+    host: add-task.collegesmate.shop
+
+get-task:
+  replicas: 2
+  image:
+    name: get-task-image
+    tag: v1
+  servicePort: 8080
+  Port: 80
+  ingress:
+    host: get-task.collegesmate.shop
+
+delete-task:
+  replicas: 2
+  image:
+    name: delete-task-image
+    tag: v1
+  servicePort: 8080
+  Port: 80
+  ingress:
+    host: delete-task.collegesmate.shop

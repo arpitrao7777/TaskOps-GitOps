@@ -1,7 +1,7 @@
 common:
   ContainerRegistryUrl: test32971.azurecr.io
   ConnectionString: Driver={ODBC Driver 18 for SQL Server};Server=tcp:test32971.database.windows.net,1433;Database=testerdb1;Uid=mysqladmin;Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
-  ingressClass: 
+  ingressClass: azure-application-gateway
 
 ui:
   replicas: 2
@@ -11,7 +11,7 @@ ui:
   servicePort: 80
   Port: 80
   ingress: 
-    host: 
+    host: ui.collegesmate.shop
 
 add-task:
   replicas: 2
@@ -21,7 +21,7 @@ add-task:
   servicePort: 8080
   Port: 80
   ingress:
-    host: 
+    host: add-task.collegesmate.shop
 
 get-task:
   replicas: 2
@@ -31,7 +31,7 @@ get-task:
   servicePort: 8080
   Port: 80
   ingress:
-    host: 
+    host: get-task.collegesmate.shop
 
 delete-task:
   replicas: 2
@@ -41,4 +41,4 @@ delete-task:
   servicePort: 8080
   Port: 80
   ingress:
-    host: 
+    host: delete-task.collegesmate.shop
