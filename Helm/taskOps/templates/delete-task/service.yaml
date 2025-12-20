@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-svc
+  name: {{ .Release.Name }}-todo-delete-tasks-api
 spec:
   selector:
     app: {{ .Release.Name }}-app
