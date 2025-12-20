@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-add-task-ingress
+spec:
+  ingressClassName: {{ .Values.add-task.ingress.ingressClass }}
+  rules:
+    - host: {{ .Values.add-task.ingress.host }}
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: {{ .Release.Name }}-add-task-api
+                port:
+                  number: {{ .Values.add-task.servicePort }}

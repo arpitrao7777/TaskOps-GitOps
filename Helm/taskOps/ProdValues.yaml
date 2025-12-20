@@ -1,0 +1,35 @@
+common:
+  ContainerRegistryUrl: myregistry.azurecr.io
+  ConnectionString: 
+
+ui:
+  replicas: 3
+  image:
+    name: todo-ui
+    tag: v1
+  servicePort: 80
+  Port: 80
+
+add-task:
+  replicas: 3
+  image:
+    name: add-task
+    tag: v1
+  servicePort: 8080
+  Port: 80
+
+get-task:
+  replicas: 3
+  image:
+    name: get-task
+    tag: v1
+  servicePort: 8080
+  Port: 80
+
+delete-task:
+  replicas: 3
+  image:
+    name: delete-task
+    tag: v1
+  servicePort: 8080
+  Port: 80

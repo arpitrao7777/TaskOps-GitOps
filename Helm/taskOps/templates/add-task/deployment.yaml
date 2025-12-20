@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+spec:
+  replicas: {{ .Values.add-task.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-app
+  template:
+    metadata:
+      name: demo-pod
+      labels:
+        app: {{ .Release.Name }}-app
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-container
+        image: {{ .Values.common.ContainerRegistryUrl }}/{{ .Values.add-task.image.name }}:{{ .Values.add-task.image.tag }}
+        ports:
+        - containerPort: {{ .Values.add-task.Port }}
+        env:
+        - name: CONNECTION_STRING
+          value: {{ .Values.common.ConnectionString }}
+  strategy:
+    type: RollingUpdate
