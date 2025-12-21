@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-get-task-api
+  name: {{ .Release.Name }}-get-task-svc
 spec:
   selector:
     app: {{ .Release.Name }}-app-get-task
