@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}-todo-ui-svc
 spec:
   selector:
-    app: {{ .Release.Name }}-app
+    app: {{ .Release.Name }}-app-todo-ui
   ports:
   - port: {{ .Values.ui.servicePort }}
     targetPort: {{ .Values.ui.targetPort }}

@@ -1,24 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: todo-app
+  name: test
   namespace: argocd
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/arpitrao7777/TaskOps-GitOps.git
+    repoURL: https://github.com/arpitrao7777/taskops-gitops.git
     targetRevision: main
-    path: helm/taskOps/
+    path: Helm/taskOps
     helm:
       valueFiles:
-        - ../../gitops/dev/values.yaml
+        - values.yaml
+        - ../../gitops/dev/Values.yaml
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: todo
+    namespace: dev
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

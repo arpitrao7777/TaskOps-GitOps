@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-deployment
+  name: {{ .Release.Name }}-deployment-get-task
 spec:
   replicas: {{ .Values.gettask.replicas }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-app
+      app: {{ .Release.Name }}-app-get-task
   template:
     metadata:
       name: demo-pod
       labels:
-        app: {{ .Release.Name }}-app
+        app: {{ .Release.Name }}-app-get-task
     spec:
       containers:
       - name: {{ .Release.Name }}-container

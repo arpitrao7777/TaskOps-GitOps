@@ -1,10 +1,10 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Release.Name }}-add-task-api
 spec:
   selector:
-    app: {{ .Release.Name }}-app
+    app: {{ .Release.Name }}-app-add-task
   ports:
   - port: {{ .Values.addtask.servicePort }}
     targetPort: {{ .Values.addtask.targetPort }}
