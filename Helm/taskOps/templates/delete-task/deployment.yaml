@@ -16,6 +16,7 @@ spec:
       containers:
       - name: {{ .Release.Name }}-container
         image: {{ .Values.common.ContainerRegistryUrl }}/{{ .Values.deletetask.image.name }}:{{ .Values.deletetask.image.tag }}
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.deletetask.targetPort }}
         env:
