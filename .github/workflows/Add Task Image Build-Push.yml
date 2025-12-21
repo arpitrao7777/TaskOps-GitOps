@@ -1,12 +1,12 @@
 name: Add Task Image Build and Push to ACR
 
 on:
-  workflow_dispatch:  # Isse tum manually GitHub se trigger kar sakte ho
+  workflow_dispatch:
 
 permissions:
   id-token: write
   contents: read
-  
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -32,10 +32,17 @@ jobs:
         run: |
           az acr login --name $ACR_NAME
 
+      # buildx setup (mandatory)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build Docker Image
-        run: |
-          docker build --platform linux/amd64 -t $IMAGE_NAME:$IMAGE_TAG .
         working-directory: Services/TaskOps-add-task
+        run: |
+          docker buildx build \
+            --platform linux/amd64 \
+            --load \
+            -t $IMAGE_NAME:$IMAGE_TAG .
 
       - name: Tag Docker Image for ACR
         run: |
