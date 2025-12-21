@@ -13,7 +13,7 @@ jobs:
 
     env:
       IMAGE_NAME: todo-ui-image
-      IMAGE_TAG: v1
+      IMAGE_TAG: v2
       ACR_NAME: test32971
       ACR_LOGIN_SERVER: test32971.azurecr.io
 

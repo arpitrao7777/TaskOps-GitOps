@@ -7,7 +7,7 @@ ui:
   replicas: 2
   image:
     name: todo-ui-image
-    tag: v1
+    tag: v2
   servicePort: 80
   targetPort: 80
   ingress: 
@@ -17,7 +17,7 @@ addtask:
   replicas: 2
   image:
     name: add-task-image
-    tag: v1
+    tag: v2
   servicePort: 8080
   targetPort: 80
   ingress:
@@ -27,7 +27,7 @@ gettask:
   replicas: 2
   image:
     name: get-task-image
-    tag: v1
+    tag: v2
   servicePort: 8080
   targetPort: 80
   ingress:
@@ -37,7 +37,7 @@ deletetask:
   replicas: 2
   image:
     name: delete-task-image
-    tag: v1
+    tag: v2
   servicePort: 8080
   targetPort: 80
   ingress:
