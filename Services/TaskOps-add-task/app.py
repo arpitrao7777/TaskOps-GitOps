@@ -2,7 +2,6 @@ import pyodbc
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-
 import os
 
 # Fetch the connection string from the environment variable
@@ -44,46 +43,24 @@ def create_tasks_table():
                 Description text
             );
         """)
-        conn.commit() 
-        return "Get Tasks API Ready."       
+        conn.commit()  
+        return "Add-Tasks API Ready."      
     except Exception as e:
         print(e)
         if "There is already an object named 'Tasks' in the database." in str(e):
-            return "Get Tasks API Ready."
+            return "Add-Tasks API Ready."
         else:
             return "Error. Please check Logs."
+    
 
-# List all tasks
-@app.get("/tasks")
-def get_tasks():
-    tasks = []
+# Create a new task
+@app.post("/tasks")
+def create_task(task: Task):
     with pyodbc.connect(connection_string) as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM Tasks")
-        for row in cursor.fetchall():
-            task = {
-                "ID": row.ID,
-                "Title": row.Title,
-                "Description": row.Description
-            }
-            tasks.append(task)
-    return tasks
-
-# Retrieve a single task by ID
-@app.get("/tasks/{task_id}")
-def get_task(task_id: int):
-    with pyodbc.connect(connection_string) as conn:
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM Tasks WHERE ID = ?", task_id)
-        row = cursor.fetchone()
-        if row:
-            task = {
-                "ID": row.ID,
-                "Title": row.Title,
-                "Description": row.Description
-            }
-            return task
-        return {"message": "Task not found"}
+        cursor.execute("INSERT INTO Tasks (Title, Description) VALUES (?, ?)", task.title, task.description)
+        conn.commit()
+    return task
 
 if __name__ == "__main__":
     create_tasks_table()

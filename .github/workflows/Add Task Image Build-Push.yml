@@ -39,10 +39,7 @@ jobs:
       - name: Build Docker Image
         working-directory: Services/TaskOps-add-task
         run: |
-          docker buildx build \
-            --platform linux/amd64 \
-            --load \
-            -t $IMAGE_NAME:$IMAGE_TAG .
+          docker buildx build --platform linux/amd64 --load -t $IMAGE_NAME:$IMAGE_TAG .
 
       - name: Tag Docker Image for ACR
         run: |
