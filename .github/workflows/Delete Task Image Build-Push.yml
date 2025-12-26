@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build --platform linux/amd64 -t $IMAGE_NAME:$IMAGE_TAG .
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
         working-directory: Services/TaskOps-delete-task
 
       - name: Tag Docker Image for ACR
