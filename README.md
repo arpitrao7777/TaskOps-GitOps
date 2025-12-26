@@ -1,6 +1,6 @@
-** # TaskOps GitOps – End-to-End Azure DevOps & GitOps Architecture **
+** # TaskOps GitOps – End-to-End Azure DevOps & GitOps Architecture**
 
-** ## 📌 Project Overview **
+**## 📌 Project Overview**
 
 TaskOps GitOps is a production-grade cloud-native project that demonstrates an end-to-end DevOps and GitOps workflow on Microsoft Azure.  
 The project automates infrastructure provisioning using Terraform modules, builds and pushes container images using GitHub Actions, and deploys microservices on Azure Kubernetes Service (AKS using Argo CD with Application Gateway Ingress Controller (AGIC).
