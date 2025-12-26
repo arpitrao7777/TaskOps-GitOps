@@ -66,43 +66,6 @@ All resources are provisioned using **Terraform modules** to ensure **reusabilit
 
 ---
 
-## 📂 Repository Structure
-
-.
-├── .github/workflows # CI pipelines (build & push)
-
-├── argocd # Argo CD application manifests
-
-├── gitops/dev # Environment-specific values
-
-├── helm/taskOps # Helm charts
-
-│ ├── templates # Deployments, services, ingress
-
-│ ├── values.yaml
-
-│ └── ProdValues.yaml
-
-├── services # Microservices source code
-
-│ ├── taskOps-add-task
-
-│ ├── taskOps-get-task
-
-│ ├── taskOps-delete-task
-
-│ └── taskOps-ui
-
-├── terraform # Infrastructure as Code
-
-│ ├── environments
-
-│ └── modules
-
-└── README.md
-
----
-
 ## 🔑 Key DevOps Concepts Demonstrated
 
 - Terraform Modules & Environment Separation  
