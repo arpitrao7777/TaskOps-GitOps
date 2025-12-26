@@ -19,8 +19,5 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.ui.targetPort }}
-        env:
-        - name: CONNECTION_STRING 
-          value: {{ .Values.common.ConnectionString }}
   strategy:
     type: RollingUpdate
