@@ -1,6 +1,6 @@
-**# TaskOps GitOps – End-to-End Azure DevOps & GitOps Architecture**
+** # TaskOps GitOps – End-to-End Azure DevOps & GitOps Architecture **
 
-**## 📌 Project Overview**
+** ## 📌 Project Overview **
 
 TaskOps GitOps is a production-grade cloud-native project that demonstrates an end-to-end DevOps and GitOps workflow on Microsoft Azure.  
 The project automates infrastructure provisioning using Terraform modules, builds and pushes container images using GitHub Actions, and deploys microservices on Azure Kubernetes Service (AKS using Argo CD with Application Gateway Ingress Controller (AGIC).
@@ -9,9 +9,9 @@ This architecture follows Infrastructure as Code (IaC), GitOps principles, and m
 
 ---
 
-**## 🏗️ Architecture Components**
+** ## 🏗️ Architecture Components **
 
-***### ☁️ Infrastructure (Terraform – Modular)**
+*** ### ☁️ Infrastructure (Terraform – Modular) **
 
 - Azure Resource Group
 - Azure Container Registry (ACR)
@@ -24,7 +24,7 @@ All resources are provisioned using **Terraform modules** for reusability and sc
 
 ---
 
-**### 🔄 CI/CD (GitHub Actions)**
+** ### 🔄 CI/CD (GitHub Actions) **
 
 - Workflow-based image build and push
 - Separate workflows per microservice
@@ -34,7 +34,7 @@ All resources are provisioned using **Terraform modules** for reusability and sc
 
 ---
 
-**### 🚀 GitOps Deployment (Argo CD)**
+** ### 🚀 GitOps Deployment (Argo CD) **
 
 - Argo CD continuously watches the GitOps repository
 - Automatically syncs Kubernetes manifests/Helm charts
@@ -43,7 +43,7 @@ All resources are provisioned using **Terraform modules** for reusability and sc
 
 ---
 
-**### 🌐 Kubernetes & Networking**
+** ### 🌐 Kubernetes & Networking **
 
 - Microservices-based architecture:
   - UI Service
@@ -56,7 +56,7 @@ All resources are provisioned using **Terraform modules** for reusability and sc
 
 ---
 
-**### 🗄️ Database**
+** ### 🗄️ Database **
 
 - Azure SQL Database used as backend storage
 - Secure connection via environment variables and Helm values
@@ -64,7 +64,7 @@ All resources are provisioned using **Terraform modules** for reusability and sc
 
 ---
 
-**## 📂 Repository Structure**
+** ## 📂 Repository Structure **
 
 .
 ├── .github/workflows # CI pipelines (build & push)
@@ -86,7 +86,7 @@ All resources are provisioned using **Terraform modules** for reusability and sc
 
 ---
 
-**## 🔑 Key DevOps Concepts Demonstrated**
+** ## 🔑 Key DevOps Concepts Demonstrated **
 
 - Terraform Modules & Environment Separation
 - GitHub Actions with workflow_dispatch
@@ -99,7 +99,7 @@ All resources are provisioned using **Terraform modules** for reusability and sc
 
 ---
 
-**## 🎯 Outcome**
+** ## 🎯 Outcome **
 
 This project simulates a real-world enterprise DevOps pipeline where:
 - Infrastructure is fully automated
@@ -109,7 +109,7 @@ This project simulates a real-world enterprise DevOps pipeline where:
 
 ---
 
-**## 👨‍💻 Author**
+** ## 👨‍💻 Author **
 
 **Arpit Yadav**  
 DevOps Engineer | Cloud & Automation Enthusiast  
