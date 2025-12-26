@@ -1,7 +1,6 @@
 common:
   ContainerRegistryUrl: test32971.azurecr.io
-  ConnectionString: Driver={ODBC Driver 18 for SQL Server};Server=tcp:test32971.database.windows.net,1433;Database=testerdb1;Uid=mysqladmin;Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
-  ingressClass: azure-application-gateway
+  ConnectionString: Driver={ODBC Driver 18 for SQL Server};Server=tcp:test32971.database.windows.net,1433;Database=testerdb1;Uid=mysqladmin;Pwd=SecureP@ssw0rd!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
 
 ui:
   replicas: 2

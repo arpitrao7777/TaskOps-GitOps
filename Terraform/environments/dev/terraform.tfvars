@@ -13,7 +13,7 @@ aks = {
     dns_prefix          = "aks1dns"
     node_pool_name      = "default"
     node_count          = 1
-    vm_size             = "Standard_D2ps_v6"
+    vm_size             = "Standard_D2ps_v5"
   }
 }
 
