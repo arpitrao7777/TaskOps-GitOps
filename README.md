@@ -1,99 +1,172 @@
-# TaskOps GitOps – End-to-End Azure DevOps & GitOps Architecture
+# 🚀 TaskOps – End-to-End DevOps & GitOps Automation Platform
 
-## 📌 Project Overview
+TaskOps is a production-oriented DevOps project demonstrating **automated CI pipelines**, **container image lifecycle management**, **infrastructure provisioning with Terraform**, and **GitOps-based Kubernetes deployments using Helm and Argo CD**.
 
-TaskOps GitOps is a **production-grade cloud-native project** that demonstrates an **end-to-end DevOps and GitOps workflow on Microsoft Azure**.
-
-The project automates infrastructure provisioning using **Terraform modules**, builds and pushes container images using **GitHub Actions**, and deploys microservices on **Azure Kubernetes Service (AKS)** using **Argo CD** with **Application Gateway Ingress Controller (AGIC)**.
-
-This architecture follows **Infrastructure as Code (IaC)**, **GitOps principles**, and **modern CI/CD best practices**.
+The repository follows a **microservice-first architecture**, where each backend service and UI component is independently built, deployed, and managed.
 
 ---
 
-## 🏗️ Architecture Components
+## 🧩 Key Highlights
 
-### ☁️ Infrastructure (Terraform – Modular)
-
-- Azure Resource Group  
-- Azure Container Registry (ACR)  
-- Azure Kubernetes Service (AKS)  
-- Azure SQL Database  
-- Networking & required dependencies  
-- Environment-specific configurations (dev / prod)  
-
-All resources are provisioned using **Terraform modules** to ensure **reusability, scalability, and maintainability**.
+- Automated GitHub Actions workflows for Docker image build & push
+- Secure Azure authentication using OIDC
+- Azure Container Registry (ACR) for image storage
+- Helm charts for Kubernetes application packaging
+- Argo CD for GitOps-based continuous delivery
+- Terraform for Azure infrastructure provisioning
+- Independent CI pipelines for each microservice and UI
 
 ---
 
-### 🔄 CI/CD (GitHub Actions)
+## 📂 Repository Structure
 
-- Workflow-based Docker image build and push  
-- Separate workflows per microservice  
-- `workflow_dispatch` enabled for controlled manual execution  
-- Docker images pushed to Azure Container Registry  
-- Versioned and immutable image tagging strategy  
+```text
+TASKOPS-GITOPS
+├── .github/
+│   └── workflows/
+│       ├── Add Task Image Build-Push.yml
+│       ├── Delete Task Image Build-Push.yml
+│       ├── Get Task Image Build-Push.yml
+│       └── Todo UI Image Build-Push.yml
+│
+├── Argocd/
+│   └── taskops_app.yaml
+│
+├── gitops/
+│   └── dev/
+│       └── Values.yaml
+│
+├── Helm/
+│   └── taskOps/
+│       ├── Chart.yaml
+│       ├── values.yaml
+│       ├── DevValues.yaml
+│       ├── ProdValues.yaml
+│       └── templates/
+│           ├── add-task/
+│           │   ├── deployment.yaml
+│           │   ├── service.yaml
+│           │   └── ingress.yaml
+│           ├── delete-task/
+│           │   ├── deployment.yaml
+│           │   ├── service.yaml
+│           │   └── ingress.yaml
+│           ├── get-task/
+│           │   ├── deployment.yaml
+│           │   ├── service.yaml
+│           │   └── ingress.yaml
+│           └── todo-ui/
+│               ├── deployment.yaml
+│               ├── service.yaml
+│               └── ingress.yaml
+│
+├── Services/
+│   ├── TaskOps-add-task/
+│   ├── TaskOps-delete-task/
+│   ├── TaskOps-get-task/
+│   └── TaskOps-ui/
+│
+├── Terraform/
+│   ├── environments/
+│   │   ├── dev/
+│   │   │   ├── main.tf
+│   │   │   ├── provider.tf
+│   │   │   ├── terraform.tfvars
+│   │   │   └── variable.tf
+│   │   └── prod/
+│   └── modules/
+│       ├── azurerm_container_registry/
+│       │   ├── acr_main.tf
+│       │   └── acr_variable.tf
+│       ├── azurerm_database/
+│       │   ├── db_main.tf
+│       │   └── db_variable.tf
+│       ├── azurerm_kubernetes_services/
+│       │   ├── aks_main.tf
+│       │   └── aks_variable.tf
+│       └── azurerm_resource_group/
+│           ├── rg_main.tf
+│           └── rg_variable.tf
+│
+└── README.md
+```
 
 ---
 
-### 🚀 GitOps Deployment (Argo CD)
+## 🔁 CI/CD Workflow Trigger Strategy
 
-- Argo CD continuously monitors the GitOps repository  
-- Automatically synchronizes Kubernetes manifests and Helm charts  
-- Deploys applications on AKS  
-- Maintains **declarative, drift-free, and auditable deployments**  
+Each GitHub Actions workflow is fully automated and event-driven, designed to respond only to relevant source code changes.
 
----
+The pipelines continuously monitor their assigned service directories and are executed only when updates occur within those paths on the main branch.
 
-### 🌐 Kubernetes & Networking
+**This approach ensures:**
 
-- Microservices-based architecture:
-  - UI Service  
-  - Add Task Service  
-  - Get Task Service  
-  - Delete Task Service  
+- Precise pipeline execution per service or UI component
 
-- Helm charts for templated and environment-specific deployments  
-- Application Gateway Ingress Controller (AGIC) for ingress  
-- Host-based routing using custom domains  
+- Elimination of unnecessary image rebuilds
+
+- Faster feedback cycles and optimized CI resource usage
+
+- Independent and scalable CI/CD pipelines aligned with microservice architecture
+
+Each workflow operates in isolation, allowing backend services and the UI to evolve independently while maintaining a consistent and reliable delivery process.
 
 ---
 
-### 🗄️ Database
+## ⚙️ CI Pipeline Responsibilities
 
-- Azure SQL Database used as backend storage  
-- Secure connectivity via environment variables and Helm values  
-- Database configuration abstracted from application code  
+Each GitHub Actions workflow performs the following operations:
 
----
+1. Source code checkout
 
-## 🔑 Key DevOps Concepts Demonstrated
+2. Secure authentication to Azure using OIDC
 
-- Terraform Modules & Environment Separation  
-- GitHub Actions with `workflow_dispatch`  
-- Docker image lifecycle management  
-- GitOps deployment using Argo CD  
-- AKS with AGIC ingress  
-- Helm-based Kubernetes deployments  
-- Secure database integration  
-- Cloud-native microservices architecture  
+3. Azure Container Registry login
 
----
+4. Docker image build from the service directory
 
-## 🎯 Outcome
+5. Image tagging with versioning
 
-This project simulates a **real-world enterprise DevOps pipeline** where:
+6. Push image to Azure Container Registry
 
-- Infrastructure provisioning is fully automated  
-- Application delivery is Git-driven  
-- Deployments are secure, scalable, and auditable  
-- Manual intervention is minimized  
+This ensures a secure, repeatable, and automated image delivery process.
 
 ---
 
-## 👨‍💻 Author
+## 📦 Kubernetes & GitOps Deployment
 
-**Arpit Yadav**  
-DevOps Engineer | Cloud & Automation Enthusiast  
+- Helm charts define Kubernetes resources for all services and UI
 
-🔗 GitHub: https://github.com/arpitrao7777  
+- Environment-specific configurations are managed using values files
+
+- Argo CD continuously monitors the GitOps repository and syncs the cluster state
+
+- Changes to Helm values or manifests are automatically reflected in the cluster
+
+---
+
+## 🏗️ Infrastructure as Code (Terraform)
+
+- Modular Terraform design for reusability and clarity
+
+- Separate environments for dev and prod
+
+- Modules for:
+
+  - Resource Groups
+
+  - Azure Container Registry
+
+  - Azure Kubernetes Service
+
+  - Database services
+
+Terraform ensures consistent, auditable, and scalable infrastructure provisioning.
+
+## 👤 Author
+
+- Arpit Yadav
+- arpit39115@gmail.com
+
+🔗 GitHub: https://github.com/arpitrao7777
 🔗 LinkedIn: https://www.linkedin.com/in/arpit-yadav-786b1622b
