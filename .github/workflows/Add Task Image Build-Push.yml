@@ -1,7 +1,11 @@
 name: Add Task Image Build and Push to ACR
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Services/TaskOps-add-task/**'
 
 permissions:
   id-token: write

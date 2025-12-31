@@ -1,7 +1,11 @@
 name: Delete Task Image Build and Push to ACR
 
 on:
-  workflow_dispatch:  # Isse tum manually GitHub se trigger kar sakte ho
+  push:
+    branches:
+      - main
+    paths:
+      - 'Services/TaskOps-delete-task/**'
 
 permissions:
   id-token: write
